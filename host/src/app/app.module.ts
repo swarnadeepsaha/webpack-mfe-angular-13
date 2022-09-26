@@ -20,10 +20,9 @@ export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) { }
 
   ngDoBootstrap(appRef: ApplicationRef): void {
-
     const customComponents: [string, any][] =
       [
-        ['host-app', AppComponent]
+        ['x-host', AppComponent]
       ];
 
     for (const [customCompName, customCompApplication] of customComponents) {
