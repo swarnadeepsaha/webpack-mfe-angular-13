@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RemoteModuleLoader } from '../util/RemoteModuleLoader';
 
 @Component({
@@ -6,11 +6,20 @@ import { RemoteModuleLoader } from '../util/RemoteModuleLoader';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   bRemoteModuleLoaded = false;
+  @ViewChild('output') output!: ElementRef;
 
   ngOnInit(): void {
     this.loadRemoteModule();
+  }
+
+  ngAfterViewInit(): void {
+    this.output.nativeElement.innerText = 0;
+  }
+
+  onClick(){
+    this.output.nativeElement.innerText = Number(this.output.nativeElement.innerText) + 1;
   }
 
   loadRemoteModule(): void {
@@ -26,7 +35,7 @@ export class AppComponent implements OnInit {
     }
 
     Promise.all(remoteModuleLoadedPromises)
-      .then(() => this.bRemoteModuleLoaded = true )
-      .catch(() => this.bRemoteModuleLoaded = false )
+      .then(() => this.bRemoteModuleLoaded = true)
+      .catch(() => this.bRemoteModuleLoaded = false)
   }
 }

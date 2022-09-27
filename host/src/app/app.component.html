@@ -1,6 +1,6 @@
 <div class="host">
-  <button id="btn">Host</button>
-  <div id="btn-op"></div>
+  <button id="btn" (click)="onClick()">Host</button>
+  <div #output id="btn-op"></div>
   <div class="container" *ngIf="bRemoteModuleLoaded">
     <x-app1></x-app1>
     <x-app2></x-app2>

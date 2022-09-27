@@ -5,13 +5,17 @@
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    border: 1px solid #e74c3c;;
+    border: 1px solid #e74c3c;
     border-radius: 0.6em;
     align-self: center;
     font-size: 1rem;
     line-height: 1;
     margin: 20px;
     padding: 1em 2em;
+}
+
+#btn-op {
+    color: #e74c3c;
 }
 
 .container {
