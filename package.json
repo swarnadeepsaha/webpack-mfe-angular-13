@@ -4,6 +4,7 @@
   "description": "webpack mfe with angular 13",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "start": "lerna run start --stream",
     "build": "lerna run build --parallel"
   },
   "repository": {
