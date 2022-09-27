@@ -34,6 +34,7 @@
 							"src/styles.scss"
 						],
 						"scripts": [],
+						"deployUrl": "application/app2/",
 						"extraWebpackConfig": "webpack.config.js",
 						"commonChunk": false
 					},

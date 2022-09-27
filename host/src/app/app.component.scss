@@ -5,12 +5,28 @@
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    border: 2px solid #e74c3c;
-    font-size: 1rem;
+    border: 1px solid #e74c3c;;
+    border-radius: 0.6em;
     align-self: center;
     font-size: 1rem;
-    font-weight: 400;
     line-height: 1;
     margin: 20px;
-    padding: 1.2em 2.8em;
+    padding: 1em 2em;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(232, 183, 172);
+    margin: 15px;
+}
+
+.host {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(222, 165, 43);
+    margin: 15px;
+    width: 50%;
 }
