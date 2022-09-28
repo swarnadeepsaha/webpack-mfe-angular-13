@@ -46,6 +46,14 @@ export class CountState {
 
         // Observable: fire and wait (returning the handle)
         // Doesn't Work with Webpack MFE (remote)
+        /**
+         * if shared libraries such as -
+         * "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+         * "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+         * "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+         * "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' }
+         * are removed from webpack.config.json it works!
+         */
         return this.service.getTodos(1)
             .pipe(
                 tap(() => {
