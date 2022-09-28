@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, StateToken, Selector } from '@ngxs/store';
-import { lastValueFrom, take, tap } from 'rxjs';
+import { lastValueFrom, Observable, take, tap } from 'rxjs';
 import { ICount } from '../../model/count.model';
 import { JsonPlaceHolderTodoService } from '../../services/json-place-holder-todo.service';
 import { AddCount } from '../action/count.action';
@@ -41,7 +41,6 @@ export class CountState {
             const countState = getState();
             setState({ count: countState.count + 1 });
         });
-
         */
 
         // Observable: fire and wait (returning the handle)
