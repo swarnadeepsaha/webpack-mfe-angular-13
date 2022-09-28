@@ -12,6 +12,10 @@
     line-height: 1;
     margin: 20px;
     padding: 1em 2em;
+    &:hover,
+    &:focus{
+        background-color: rgb(243, 246, 248, 0.7)
+    }
 }
 
 #btn-op {
