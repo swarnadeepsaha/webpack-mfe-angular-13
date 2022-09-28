@@ -18,6 +18,15 @@ export class JsonPlaceHolderTodoService {
       );
   }
 
+  fakeCall(): Observable<any> {
+    return new Observable((subscriber) => {
+      setTimeout(() => {
+        subscriber.next(true);
+        subscriber.complete();
+      }, 10);
+    });
+  }
+
   handleError(){
     console.error('error during http call');
     return throwError(() => new Error('Error'));

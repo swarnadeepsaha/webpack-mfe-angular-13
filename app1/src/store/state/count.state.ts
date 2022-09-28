@@ -45,7 +45,7 @@ export class CountState {
         */
 
         // Observable: fire and wait (returning the handle)
-        // Doesn't Work with Webpack MFE (remote)
+        // Doesn't Work with Webpack MFE (remote) with http client doesn't work
         /**
          * if shared libraries such as -
          * "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
@@ -62,6 +62,18 @@ export class CountState {
                 })
             );
 
+        /*
+        // Observable: fire and wait (returning the handle)
+        // Work with Webpack MFE (remote) with if http client is not involved
+        return this.service.fakeCall()
+            .pipe(
+                tap(() => {
+                    const countState = getState();
+                    setState({ count: countState.count + 1 });
+                })
+            );
+        */
+       
         /*
         // Observable: fire and forget (not returning the handle)
         this.service.getTodos(1).subscribe(() => {

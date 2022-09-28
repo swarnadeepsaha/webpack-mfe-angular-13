@@ -16,7 +16,7 @@ const COUNT_STATE_TOKEN = new StateToken<ICount>('count');
 @Injectable()
 export class CountState {
 
-    constructor(private service: JsonPlaceHolderTodoService) {}
+    constructor(private service: JsonPlaceHolderTodoService) { }
 
     @Selector()
     static getCount(state: ICount) {
@@ -25,18 +25,22 @@ export class CountState {
 
     @Action(AddCount)
     addCount({ getState, setState }: StateContext<ICount>) {
-        const todos$ = this.service.getTodos(1).pipe(take(1));
-        return lastValueFrom(todos$).then(() => {
-            const countState = getState();
-            setState({ count: countState.count + 1 });
-        });
+        return this.service.fakeCall()
+            .pipe(
+                tap(() => {
+                    const countState = getState();
+                    setState({ count: countState.count + 1 });
+                })
+            );
+
         /*
-        .pipe(
-            tap(() => {
-                const countState = getState();
-                setState({ count: countState.count + 1 });
-            })
-        );
+        return this.service.getTodos(1)
+            .pipe(
+                tap(() => {
+                    const countState = getState();
+                    setState({ count: countState.count + 1 });
+                })
+            );
         */
     }
 }

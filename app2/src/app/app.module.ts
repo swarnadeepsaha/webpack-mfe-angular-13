@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ApplicationRef, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement, NgElementConstructor } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,7 +10,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   schemas: [
