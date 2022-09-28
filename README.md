@@ -36,11 +36,11 @@ For each button click on respective applications
 
 ---
 ## Issues
-1. `@ngxs/store`'s fire and wait pattern does work using mfe are loaded using webpack.
-<br/>  
+1. `@ngxs/store`'s fire and wait pattern does work using mfe are loaded using webpack.  
+.  
 ![not working](/resources/not%20working.gif)
-<sub>* App1 is loaded to host using webpack and uses `@ngxs/store` to update the it's count.</sub>
-<br/>  
+<sub>* App1 is loaded to host using webpack and uses `@ngxs/store` to update the it's count.</sub>  
+.  
 _If you return an Observable NGXS will subscribe to the observable for you and bind the action's completion lifecycle event to the completion of the Observable._  
 Looks like this is not working for the mentioned cases.
 
