@@ -20,29 +20,58 @@ There are three(3) different web component created from three(3) individual angu
 
 *Host* application will load *App1* and *App2* applications using `angular module federation` api which in turn uses `webpack`.
 
-![Host contains App1 and App2](/resources/arch-daigram.png)
+<img src="./resources/arch-daigram.png" alt="architecture diagram" width=80% height=80%>  
+
+<br/>
+
+<img src="./resources/initial.png" alt="how it will looks when loaded" width=80% height=80%>  
+
+<br/>
+
+**Directory structure**
+```
+| --  package.json  
+| --  lerna.json  
+| --  | -- host  
+| --  | -- | -- package.json  
+| --  | -- app1  
+| --  | -- | -- package.json  
+| --  | -- app2  
+| --  | -- | -- package.json  
+```
+
 ## Run & Build  
-This project is monorepo created using `lerna`.
+This project is a monorepo created using `lerna`.
 
-To run the `npm start` from [package.json](./package.json) and open [http://localhost:4200/application/host](http://localhost:4200/application/host)
+To run the _Host_ containing _App1_ and _App2_:  
+`npm start` from [package.json](./package.json) and open [http://localhost:4200/application/host](http://localhost:4200/application/host)  
 
-![intial](/resources/initial.png)
+<img src="./resources/working.gif" alt="app1 and app2 running inside host" width=80% height=80%>  
+
+<br/>
+
+One can also run _App1_ and _App2_ individually.
+- To run _App1_ `npm run start:app1` from from [package.json](./package.json) and open [http://localhost:4201/application/app1](http://localhost:4201/application/app1).  
+
+<img src="./resources/app1-sa.gif" alt="app1 runining standalone" width=40% height=40%> 
+
+- To run _App2_ `npm run start:app2` from from [package.json](./package.json) and open [http://localhost:4202/application/app2](http://localhost:4202/application/app2).  
+
+<img src="./resources/app2-sa.gif" alt="app2 runining standalone" width=40% height=40%>  
+
+<br/>
 
 For each button click on respective applications
 - a backend http request will happen
 - on successful http response counter will increase by one
-
-![running](/resources/working.gif)
-
 ---
 ## Issues
-1. `@ngxs/store`'s fire and wait pattern does work using mfe are loaded using webpack.  
-.  
-![not working](/resources/not%20working.gif)
-<sub>* App1 is loaded to host using webpack and uses `@ngxs/store` to update the it's count.</sub>  
-.  
-_If you return an Observable NGXS will subscribe to the observable for you and bind the action's completion lifecycle event to the completion of the Observable._  
-Looks like this is not working for the mentioned cases.
+1. `@ngxs/store`'s *fire and wait* pattern using *Observables* does work when mfes' are being loaded using webpack.
+<br/>
+<br/>
+<img src=".//resources/not%20working.gif" alt="not working" width=80% height=80%>  
+<sub>* App1 is loaded to host using webpack and uses `@ngxs/store` to update the it's count</sub> 
+<br/>  
 
     - @ngxs/store [fire & wait pattern](https://www.ngxs.io/advanced/actions-life-cycle#asynchronous-actions-continued-fire-and-forget-vs-fire-and-wait) when handler is returned the asynchronous work from the `@Action` method.
     - `http` client to be used. No http network call.
@@ -54,3 +83,9 @@ Looks like this is not working for the mentioned cases.
     - If we choose fire & forget pattern, i.e not returning the handle to the asynchronous work from the @Action method, it works!  
     If Observables are converted to promises, both fire & wait and fire & forget pattern works!  
     _Reference_: [./app1//src/store/state/count.state.ts](./app1//src/store/state/count.state.ts)
+    <br/>
+>If you return an Observable NGXS will subscribe to the observable for you and bind the action's completion lifecycle event to the completion of the Observable.  
+
+Looks like this is not working for the mentioned cases.
+
+   
