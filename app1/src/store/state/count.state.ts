@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, StateToken, Selector } from '@ngxs/store';
-import { lastValueFrom, Observable, take, tap } from 'rxjs';
+// import { lastValueFrom, Observable, take, tap } from 'rxjs'; // rxjs 7.5.0
+import { tap } from 'rxjs/operators'; // rxjs 6.5.4
 import { ICount } from '../../model/count.model';
 import { JsonPlaceHolderTodoService } from '../../services/json-place-holder-todo.service';
 import { AddCount } from '../action/count.action';
@@ -27,6 +28,7 @@ export class CountState {
     addCount({ getState, setState }: StateContext<ICount>) {
         /*
         // Promise: Fire and Forget (not returning the handle)
+        // lastValueFrom is available in rxjs 7.5.0
         const todos$ = this.service.getTodos(1).pipe(take(1));
         lastValueFrom(todos$).then(() => {
             const countState = getState();
@@ -36,6 +38,7 @@ export class CountState {
 
         /*
         // Promise: Fire and wait (returning the handle)
+        // lastValueFrom is available in rxjs 7.5.0
         const todos$ = this.service.getTodos(1).pipe(take(1));
         return lastValueFrom(todos$).then(() => {
             const countState = getState();

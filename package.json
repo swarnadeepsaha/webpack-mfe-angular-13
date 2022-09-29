@@ -8,7 +8,8 @@
     "start:app1": "lerna run start --stream --scope app1",
     "start:app2": "lerna run start --stream --scope app2",
     "start:host": "lerna run start --stream --scope host",
-    "build": "lerna run build --parallel"
+    "build": "lerna run build --parallel",
+    "clean": "lerna clean -y"
   },
   "repository": {
     "type": "git",

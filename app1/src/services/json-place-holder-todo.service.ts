@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, subscribeOn, throwError, timeout } from 'rxjs';
+// import { catchError, Observable, subscribeOn, throwError, timeout } from 'rxjs'; // rxjs 7.5.0
+import { Observable, throwError } from 'rxjs'; // rxjs 6.5.4
+import { catchError, timeout } from 'rxjs/operators'; // rxjs 6.5.4
 
 @Injectable({
   providedIn: 'root'
