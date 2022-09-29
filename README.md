@@ -66,23 +66,20 @@ For each button click on respective applications
 - on successful http response counter will increase by one
 ---
 ## Issues
-- `@ngxs/store`'s *fire and wait* pattern using *Observables* does work when mfes' are being loaded using webpack.  
-<br/>
-<img src="./resources/not%20working.gif" alt="not working" width=80% height=80%>  
-<sub>* App1 is loaded to host using webpack and uses `@ngxs/store` to update the it's count</sub>  
-    <br/>
-    - @ngxs/store [fire & wait pattern](https://www.ngxs.io/advanced/actions-life-cycle#asynchronous-actions-continued-fire-and-forget-vs-fire-and-wait) when handler is returned the asynchronous work from the `@Action` method.
+- `@ngxs/store`'s *fire and wait* pattern using *Observables* does work when mfes' are being loaded using webpack.
+    - @ngxs/store [fire & wait pattern](https://www.ngxs.io/advanced/actions-life-cycle#asynchronous-actions-continued-fire-and-forget-vs-fire-and-wait)    when handler is returned the asynchronous work from the `@Action` method.
     - `http` client to be used. No http network call.
     - If application is requested without hosting to another application, it works!  
     In this case, if we run app1 and load without using any webpack feature, it works!  
     **How?** Run `npm start` from app1's [package.json](./app1/package.json) and open [http://localhost:4201/application/app1](http://localhost:4201/application/app1)
     - If shared libraries are being removed from [webpack.config.js](./app1/webpack.config.js), it works!  
-    <img src="./resources/remove-angular-shared-lib-webpack-config.png" alt="remove angular shared lib from webpack]" width=75% height=75%> 
+    ![remove angular shared lib from webpack](./resources/remove-angular-shared-lib-webpack-config.png) 
     - If we choose fire & forget pattern, i.e not returning the handle to the asynchronous work from the @Action method, it works!  
     If Observables are converted to promises, both fire & wait and fire & forget pattern works!  
-    _Reference_: [./app1//src/store/state/count.state.ts](./app1//src/store/state/count.state.ts)
-    <br/>
->If you return an Observable NGXS will subscribe to the observable for you and bind the action's completion lifecycle event to the completion of the Observable.  
+    _Reference_: [./app1//src/store/state/count.state.ts](./app1//src/store/state/count.state.ts)  
+<img src="./resources/not%20working.gif" alt="not working" width=80% height=80%>   
+
+> If you return an Observable NGXS will subscribe to the observable for you and bind the action's completion lifecycle event to the completion of the Observable.  
 
 Looks like this is not working for the mentioned cases.
 
