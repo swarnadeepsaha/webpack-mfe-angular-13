@@ -66,13 +66,11 @@ For each button click on respective applications
 - on successful http response counter will increase by one
 ---
 ## Issues
-1. `@ngxs/store`'s *fire and wait* pattern using *Observables* does work when mfes' are being loaded using webpack.
-<br/>
+1. `@ngxs/store`'s *fire and wait* pattern using *Observables* does work when mfes' are being loaded using webpack.  
 <br/>
 <img src=".//resources/not%20working.gif" alt="not working" width=80% height=80%>  
 <sub>* App1 is loaded to host using webpack and uses `@ngxs/store` to update the it's count</sub> 
-<br/>  
-
+<br/>   
     - @ngxs/store [fire & wait pattern](https://www.ngxs.io/advanced/actions-life-cycle#asynchronous-actions-continued-fire-and-forget-vs-fire-and-wait) when handler is returned the asynchronous work from the `@Action` method.
     - `http` client to be used. No http network call.
     - If application is requested without hosting to another application, it works!  
