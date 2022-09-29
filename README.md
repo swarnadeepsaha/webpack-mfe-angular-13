@@ -1,5 +1,5 @@
 # webpack-mfe-angular-13
-Reusable *web component* using `@angular/elements`(Angular 13) by leveraging the power of *Module Federation* feature of `webpack`.
+Reusable *web component* using `@angular/elements`(Angular 13) leveraging the power of *Module Federation* feature of `webpack`.
 
 **Used libraries**
 - @angular/core v13.3.11
@@ -51,11 +51,11 @@ To run the _Host_ containing _App1_ and _App2_:
 <br/>
 
 One can also run _App1_ and _App2_ individually.
-- To run _App1_ `npm run start:app1` from from [package.json](./package.json) and open [http://localhost:4201/application/app1](http://localhost:4201/application/app1).  
+- To run _App1_ `npm run start:app1` from [package.json](./package.json) and open [http://localhost:4201/application/app1](http://localhost:4201/application/app1).  
 
 <img src="./resources/app1-sa.gif" alt="app1 runining standalone" width=40% height=40%> 
 
-- To run _App2_ `npm run start:app2` from from [package.json](./package.json) and open [http://localhost:4202/application/app2](http://localhost:4202/application/app2).  
+- To run _App2_ `npm run start:app2` from [package.json](./package.json) and open [http://localhost:4202/application/app2](http://localhost:4202/application/app2).  
 
 <img src="./resources/app2-sa.gif" alt="app2 runining standalone" width=40% height=40%>  
 
@@ -66,7 +66,7 @@ For each button click on respective applications
 - on successful http response counter will increase by one
 ---
 ## Issues
-- `@ngxs/store`'s *fire and wait* pattern using *Observables* does work when mfes' are being loaded using webpack.
+- `@ngxs/store`'s *fire and wait* pattern using *Observables* does not work when mfes' are being loaded using webpack.
     - @ngxs/store [fire & wait pattern](https://www.ngxs.io/advanced/actions-life-cycle#asynchronous-actions-continued-fire-and-forget-vs-fire-and-wait)    when handler is returned the asynchronous work from the `@Action` method.
     - `http` client to be used. No http network call.
     - If application is requested without hosting to another application, it works!  
@@ -82,5 +82,3 @@ For each button click on respective applications
 > If you return an Observable NGXS will subscribe to the observable for you and bind the action's completion lifecycle event to the completion of the Observable.  
 
 Looks like this is not working for the mentioned cases.
-
-   
