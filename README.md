@@ -8,7 +8,7 @@ Reusable *web component* using `@angular/elements`(Angular 13) leveraging the po
 - @angular-architects/module-federation-tools v14.3.10
 - @ngxs/store v3.7.3
 - ngx-build-plus v13.0.1
-- rxjs v7.5.0
+- rxjs v7.5.0 & v6.5.4
 - zone.js v0.11.4
 - typescript 4.6.2
 
