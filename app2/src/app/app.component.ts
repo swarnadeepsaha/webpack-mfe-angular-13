@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { JsonPlaceHolderTodoService } from '../services/json-place-holder-todo.service';
 import { SubSink } from 'subsink';
+import rxjsPackage from 'rxjs/package.json'
+
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,11 @@ import { SubSink } from 'subsink';
 export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('output') output!: ElementRef;
   private subs = new SubSink();
+  rxjsVersion!: string;
 
-  constructor(private service: JsonPlaceHolderTodoService) { }
+  constructor(private service: JsonPlaceHolderTodoService) {
+    this.rxjsVersion = rxjsPackage.version;
+   }
 
   ngAfterViewInit(): void {
     this.output.nativeElement.innerText = 0;

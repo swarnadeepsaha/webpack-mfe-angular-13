@@ -5,6 +5,7 @@ import { SubSink } from 'subsink';
 import { ICount } from '../model/count.model';
 import { Observable } from 'rxjs';
 import { AddCount } from '../store/action/count.action';
+import rxjsPackage from 'rxjs/package.json'
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   @Select(CountState.getCount) count$!: Observable<ICount>;
   private subs = new SubSink();
 
-  constructor(private readonly store: Store) { }
+  rxjsVersion!: string;
+
+  constructor(private readonly store: Store) { 
+    this.rxjsVersion = rxjsPackage.version;
+  }
 
   ngAfterViewInit(): void {
     this.subs.add(

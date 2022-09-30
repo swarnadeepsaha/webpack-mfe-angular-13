@@ -6,6 +6,7 @@ import { AddCount } from 'src/store/action/count.action';
 import { CountState } from '../store/state/count.state';
 import { RemoteModuleLoader } from '../util/RemoteModuleLoader';
 import { SubSink } from 'subsink';
+import rxjsPackage from 'rxjs/package.json'
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @Select(CountState.getCount) count$!: Observable<ICount>;
   private subs = new SubSink();
 
-  constructor(private readonly store: Store) { }
+  rxjsVersion!: string;
+
+  constructor(private readonly store: Store) { 
+    this.rxjsVersion = rxjsPackage.version;
+  }
 
   ngOnInit(): void {
     this.loadRemoteModule();
