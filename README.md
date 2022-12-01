@@ -6,7 +6,7 @@ Reusable *web component* using `@angular/elements`(Angular 13) leveraging the po
 - @angular/elements v13.3.11
 - @angular-architects/module-federation v14.0.1
 - @angular-architects/module-federation-tools v14.3.10
-- @ngxs/store v3.7.3
+- @ngxs/store v3.7.6
 - ngx-build-plus v13.0.1
 - rxjs v7.5.0 & v6.5.4
 - zone.js v0.11.4
@@ -66,7 +66,7 @@ For each button click on respective applications
 - on successful http response counter will increase by one
 ---
 ## Issues
-- `@ngxs/store`'s *fire and wait* pattern using *Observables* does not work when mfes' are being loaded using webpack [[#1921](https://github.com/ngxs/store/issues/1921)].  
+- `@ngxs/store`'s *fire and wait* pattern using *Observables* does not work when mfes' are being loaded using webpack [[#1921](https://github.com/ngxs/store/issues/1921)]. (Fixed in `v3.7.6`)  
     - @ngxs/store [fire & wait pattern](https://www.ngxs.io/advanced/actions-life-cycle#asynchronous-actions-continued-fire-and-forget-vs-fire-and-wait)    when handler is returned the asynchronous work from the `@Action` method.
     - `http` client to be used. No http network call.
     - If application is requested without hosting to another application, it works!  

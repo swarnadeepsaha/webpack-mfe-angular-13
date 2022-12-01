@@ -25,6 +25,7 @@ export class CountState {
 
     @Action(AddCount)
     addCount({ getState, setState }: StateContext<ICount>) {
+        /*
         return this.service.fakeCall()
             .pipe(
                 tap(() => {
@@ -32,8 +33,7 @@ export class CountState {
                     setState({ count: countState.count + 1 });
                 })
             );
-
-        /*
+        */
         return this.service.getTodos(1)
             .pipe(
                 tap(() => {
@@ -41,6 +41,5 @@ export class CountState {
                     setState({ count: countState.count + 1 });
                 })
             );
-        */
     }
 }

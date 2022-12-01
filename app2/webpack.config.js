@@ -49,7 +49,7 @@ module.exports = {
         "@angular/common": { requiredVersion: 'auto' },
         "@angular/common/http": { requiredVersion: 'auto' },
         "@angular/router": { requiredVersion: 'auto' },
-        // "rxjs": { singleton: true, requiredVersion: 'auto' },
+        "rxjs": { requiredVersion: 'auto' },
         ...sharedMappings.getDescriptors()
       })
 
